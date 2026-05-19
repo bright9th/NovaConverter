@@ -1,0 +1,11 @@
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.panel-expanded {
+  position: fixed !important;
+  inset: 0;
+  z-index: 9999;
+  border-radius: 0 !important;
+}

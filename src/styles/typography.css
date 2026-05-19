@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "NovaModern";
+  src: url("/fonts/NovaModern.woff2") format("woff2");
+  font-display: swap;
+}
+
+.font-a {
+  font-family: var(--font-a);
+}
+
+.font-b {
+  font-family: var(--font-b);
+}
+
+.font-c {
+  font-family: var(--font-c);
+}

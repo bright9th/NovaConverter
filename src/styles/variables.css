@@ -1,0 +1,21 @@
+:root {
+  --bg: #fafafa;
+  --panel: #ffffff;
+
+  --text: #1e293b;
+  --muted: #6b7280;
+
+  --accent-aqua: #60a5fa;
+  --accent-yellow: #facc15;
+
+  --radius-panel: 24px;
+  --radius-button: 12px;
+
+  --shadow-panel: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  --font-a: "NovaModern", sans-serif;
+  --font-b: ui-sans-serif, system-ui, sans-serif;
+  --font-c: ui-sans-serif, system-ui, sans-serif;
+
+  --mobile-breakpoint: 900px;
+}
