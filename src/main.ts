@@ -6,4 +6,10 @@ const app = mount(App, {
   target: document.getElementById("app")!,
 });
 
+window.addEventListener("DOMContentLoaded", () => {
+  requestAnimationFrame(() => {
+    document.body.classList.add("mounted");
+  });
+});
+
 export default app;

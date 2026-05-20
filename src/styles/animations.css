@@ -1,4 +1,8 @@
 body {
+  transition: none
+}
+
+body.mounted {
   transition: background .3s, color .3s;
 }
 
