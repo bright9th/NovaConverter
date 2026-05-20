@@ -1,7 +1,7 @@
 {
   "name": "nova-converter",
   "private": true,
-  "version": "2.2.1",
+  "version": "2.2.2",
   "type": "module",
   "homepage": "https://bright9th.github.io//NovaConverter/",
   "scripts": {
