@@ -49,7 +49,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
       "><div class="
           flex w-full items-center gap-3 px-4
         "><div class="
-            flex min-w-5 sm:min-w-6 items-center justify-center
+            flex min-w-4 sm:min-w-6 items-center justify-center
           "><!></div> <span class="
             whitespace-nowrap
             opacity-0
