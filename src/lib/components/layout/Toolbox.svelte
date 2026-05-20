@@ -174,7 +174,7 @@
         <!-- perfectly centered icon -->
         <div
           class="
-            flex min-w-5 sm:min-w-6 items-center justify-center
+            flex min-w-4 sm:min-w-6 items-center justify-center
           "
         >
           <item.icon
