@@ -5,7 +5,9 @@ export type RepoInfo = {
 
 export async function fetchRepoInfo() {
   try {
-    const repoUrl = import.meta.env.VITE_REPO_URL;
+    /* There's no equilent of .env on GitHub settings so I'll just put it here */
+    // const repoUrl = import.meta.env.VITE_REPO_URL;
+    const repoUrl = "https://github.com/bright9th/NovaConverter";
 
     if (!repoUrl) {
       throw new Error("Missing repo URL");
