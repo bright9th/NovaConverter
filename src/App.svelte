@@ -54,9 +54,9 @@
     <div
       class="
         flex
-        max-[900px]:flex-col
+        max-[1100px]:flex-col
         gap-4
-        min-[900px]:grid-cols-2
+        min-[1100px]:grid-cols-2
       "
     >
       <div class="min-w-0 h-full min-h-0 flex-1">

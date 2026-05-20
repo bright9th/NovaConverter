@@ -34,19 +34,29 @@
   <div
     class="
       flex
-      items-center
-      justify-between
+      flex-col
+      sm:flex-row
+      sm:items-center
+      sm:justify-between
+      gap-2
+      sm:gap-2
       bg-[var(--panel-light)]
       border-b
       border-[var(--border)]/10
-      px-4
-      py-3
+      px-3
+      sm:px-4
+      py-2
+      sm:py-3
     "
   >
-    <h2 class="font-c text-xs font-bold tracking-[0.2em]">SYSTEM UI</h2>
+    <div
+      class="flex items-center justify-between sm:justify-start gap-2 sm:gap-4"
+    >
+      <h2 class="font-c text-xs font-bold tracking-[0.2em] py-2">SYSTEM UI</h2>
 
-    <div class="ml-5 text-sm text-[var(--muted)]">
-      {characterCount} chars · {lineCount} lines
+      <div class="text-xs sm:text-sm text-[var(--muted)]">
+        {characterCount} chars · {lineCount} lines
+      </div>
     </div>
 
     <div class="flex items-center gap-2">
