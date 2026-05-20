@@ -7,8 +7,10 @@
   import InputPanel from "./lib/components/panel/InputPanel.svelte";
   import OutputPanel from "./lib/components/panel/OutputPanel.svelte";
 
+  const BASE_URL = import.meta.env.BASE_URL;
+
   let bgMask = "";
-  const imageUrl = "/study-novian.jpg";
+  const imageUrl = `${BASE_URL}/study-novian.jpg`;
   let imageRatio = 16 / 9;
 
   function updateMask() {

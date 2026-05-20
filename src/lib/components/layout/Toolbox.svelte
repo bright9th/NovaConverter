@@ -14,6 +14,8 @@
   import { onMount } from "svelte";
   import { fetchRepoInfo } from "../../utils/github";
 
+  const BASE_URL = import.meta.env.BASE_URL;
+
   let opened = $state(false);
 
   let aboutOpen = $state(false);
@@ -44,47 +46,47 @@
 
   const alphabetTables = [
     {
-      href: "/study-novian.jpg",
-      src: "/study-novian.jpg",
+      href: `${BASE_URL}study-novian.jpg`,
+      src: `${BASE_URL}study-novian.jpg`,
       alt: "Study Novian",
     },
     {
-      href: "/nova-alphabet-table.jpg",
-      src: "/nova-alphabet-table.jpg",
+      href: `${BASE_URL}nova-alphabet-table.jpg`,
+      src: `${BASE_URL}nova-alphabet-table.jpg`,
       alt: "Nova Alphabet Table",
     },
     {
-      href: "/nova-alphabet-written-table.png",
-      src: "/nova-alphabet-written-table.png",
+      href: `${BASE_URL}nova-alphabet-written-table.png`,
+      src: `${BASE_URL}nova-alphabet-written-table.png`,
       alt: "Nova Alphabet Written Table",
     },
     {
-      href: "/monolith-alphabet-table.png",
-      src: "/monolith-alphabet-table.png",
+      href: `${BASE_URL}monolith-alphabet-table.png`,
+      src: `${BASE_URL}monolith-alphabet-table.png`,
       alt: "Monolith Alphabet Table",
     },
     {
-      href: "/monolith-runic-table.png",
-      src: "/monolith-runic-table.png",
+      href: `${BASE_URL}monolith-runic-table.png`,
+      src: `${BASE_URL}monolith-runic-table.png`,
       alt: "Monolith Runic Table",
     },
   ];
 
   const availableFonts = [
     {
-      href: "/fonts/NovaModern.woff2",
+      href: `${BASE_URL}fonts/NovaModern.woff2`,
       download: "NovaModern.woff2",
       label: "Nova Modern",
       type: "WOFF2",
     },
     {
-      href: "/fonts/CursiveNova-Regular.ttf",
+      href: `${BASE_URL}fonts/CursiveNova-Regular.ttf`,
       download: "CursiveNova-Regular.ttf",
       label: "Cursive Nova Regular",
       type: "TTF",
     },
     {
-      href: "/fonts/MonolithRunes.ttf",
+      href: `${BASE_URL}fonts/MonolithRunes.ttf`,
       download: "MonolithRunes.ttf",
       label: "Monolith Runes",
       type: "TTF",
@@ -93,7 +95,7 @@
 
   const incompleteFonts = [
     {
-      href: "/fonts/MonolithAlphabet.ttf",
+      href: `${BASE_URL}fonts/MonolithAlphabet.ttf`,
       download: "MonolithAlphabet.ttf",
       label: "Monolith Alphabet",
       type: "TTF",
