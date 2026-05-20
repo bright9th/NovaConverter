@@ -97,7 +97,7 @@
           />
 
           <span class="text-xs">
-            {$screenshotSettings.maxChar}
+            {$screenshotSettings.maxChar}ch
           </span>
         </div>
       </div>
@@ -185,7 +185,13 @@
           font-semibold
           hover:bg-black/10
         "
-        onclick={() => screenshotSettings.set(DEFAULT_SETTINGS)}
+        onclick={() => {
+          const currentFontFamily = $screenshotSettings.fontFamily;
+          screenshotSettings.set({
+            ...DEFAULT_SETTINGS,
+            fontFamily: currentFontFamily,
+          });
+        }}
       >
         Reset Settings
       </button>

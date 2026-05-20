@@ -23,7 +23,7 @@ export const DEFAULT_SETTINGS: ScreenshotSettings = {
 
   padding: 24,
 
-  fontFamily: "NovaModern",
+  fontFamily: "", // don't reset
 };
 
 function createPersistentStore() {

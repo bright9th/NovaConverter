@@ -10,7 +10,19 @@ export const AVAILABLE_FONTS: OutputFont[] = [
   {
     id: "novamodern",
     label: "NovaModern",
-    family: "NovaModern",
+    family: "NovaModern, system-ui",
+  },
+
+  {
+    id: "cursivenova",
+    label: "CursiveNova",
+    family: "CursiveNova-Regular, system-ui",
+  },
+
+  {
+    id: "monolithrunes",
+    label: "MonolithRunes",
+    family: "MonolithRunes, system-ui",
   },
 
   {

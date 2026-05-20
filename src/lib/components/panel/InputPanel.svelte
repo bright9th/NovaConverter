@@ -7,6 +7,7 @@
   import ExpandButton from "./ExpandButton.svelte";
   import UtilityButton from "../shared/UtilityButton.svelte";
   import AutoResizeTextarea from "./AutoResizeTextarea.svelte";
+  // import { generateStressTest } from "../../utils/stressTest";
 
   let expanded = $state(false);
 
@@ -50,6 +51,17 @@
 
     <div class="flex items-center gap-2">
       <UtilityButton onClick={clearInput}>Clear</UtilityButton>
+
+      <UtilityButton
+        onClick={() => {
+          inputText.set(
+            "abcdefghijklmnopqrstuvwxyz\n" +
+              "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n" +
+              "0123456789\n" +
+              `.:,;'"(!?)+-*/=`,
+          );
+        }}>Sample</UtilityButton
+      >
 
       <ExpandButton {expanded} onToggle={() => (expanded = !expanded)} />
     </div>
