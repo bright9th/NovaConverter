@@ -87,9 +87,11 @@
       }}
     >
       {#each AVAILABLE_FONTS as font}
-        <option value={font.id} selected={$selectedFont.id === font.id}>
-          {font.label.toUpperCase()}
-        </option>
+        {#if !font.disabled}
+          <option value={font.id} selected={$selectedFont.id === font.id}>
+            {font.label.toUpperCase()}
+          </option>
+        {/if}
       {/each}
     </select>
 

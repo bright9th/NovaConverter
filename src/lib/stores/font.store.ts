@@ -4,6 +4,7 @@ export type OutputFont = {
   id: string;
   label: string;
   family: string;
+  disabled?: boolean;
 };
 
 export const AVAILABLE_FONTS: OutputFont[] = [
@@ -17,6 +18,13 @@ export const AVAILABLE_FONTS: OutputFont[] = [
     id: "cursivenova",
     label: "CursiveNova",
     family: "CursiveNova-Regular, system-ui",
+  },
+
+  {
+    id: "monolithalphabet",
+    label: "MonolithAlphabet",
+    family: "MonolithAlphabet, system-ui",
+    disabled: true,
   },
 
   {

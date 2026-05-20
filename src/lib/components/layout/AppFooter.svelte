@@ -44,6 +44,7 @@
 
   <span class="flex flex-row gap-2">
     <span class="no-select">—</span>
-    <span>v{PACKAGE_VERSION}</span>
+    <span>v{PACKAGE_VERSION}</span><span class="no-select">—</span>
+    <span>© 2024 Yostar. All rights reserved.</span>
   </span>
 </footer>

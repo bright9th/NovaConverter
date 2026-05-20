@@ -1,8 +1,18 @@
 <script lang="ts">
   import { themeMode } from "../../stores/theme.store";
   import Modal from "../shared/Modal.svelte";
+  import { PACKAGE_VERSION } from "../../utils/packageVersion";
+  import GitHubLogo from "/github.svg";
 
-  import { Settings, MoonStar, Info, Package } from "@lucide/svelte/icons";
+  import {
+    Settings,
+    MoonStar,
+    Info,
+    Package,
+    ExternalLink,
+  } from "@lucide/svelte/icons";
+  import { onMount } from "svelte";
+  import { fetchRepoInfo } from "../../utils/github";
 
   let opened = $state(false);
 
@@ -28,6 +38,16 @@
       label: "Resources",
     },
   ];
+
+  let creator = $state("The [ MAOU ]");
+  let repoUrl = $state("#");
+
+  onMount(async () => {
+    const repo = await fetchRepoInfo();
+
+    creator = `@${repo.owner}`;
+    repoUrl = repo.url;
+  });
 </script>
 
 <div
@@ -130,7 +150,68 @@
 </div>
 
 <Modal open={aboutOpen} title="About" onClose={() => (aboutOpen = false)}>
-  <div></div>
+  <div class="space-y-6 px-2">
+    <div class="space-y-2">
+      <h3 class="font-semibold text-sm">Nova Converter</h3>
+      <p class="text-sm">
+        A lightweight utility for transforming text into stylized Nova and
+        Monolith alphabets from hit game
+        <a
+          href="https://stellasora.global/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="no-select inline-flex items-center gap-1
+          underline transition-opacity hover:opacity-70"
+          >Stella Sora <ExternalLink size={16} /></a
+        >
+      </p>
+      <p class="text-sm text-[var(--muted)] inline-flex gap-2">
+        Made by
+        <a
+          href={repoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="
+            no-select flex items-center gap-1
+            transition-opacity hover:opacity-70
+          "
+        >
+          <img src={GitHubLogo} alt="GitHub" class="h-4 [.dark_&]:invert" />
+
+          <span class="underline">
+            {creator}
+          </span>
+
+          <ExternalLink size={16} /></a
+        >
+      </p>
+    </div>
+
+    <div class="grid gap-4 text-sm">
+      <div class="space-y-2">
+        <p class="font-semibold">Features</p>
+        <ul class="ml-4 list-disc space-y-1">
+          <li>Convert English into Nova / Monolith glyphs</li>
+          <li>Export converted glyphs into sharable images</li>
+          <li>Browse alphabet tables and fonts</li>
+        </ul>
+      </div>
+
+      <div class="space-y-2">
+        <p class="font-semibold">Resources</p>
+        <p>
+          Yostar Games owns the original assets to the game, and all credits go
+          to its rightful owner.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-2 text-xs text-[var(--muted)]">
+      <span>Built with Svelte + Tailwind CSS + Vite</span>
+      <span>•</span>
+      <span>Version {PACKAGE_VERSION}</span>
+    </div>
+  </div>
 </Modal>
 
 <Modal
@@ -138,5 +219,106 @@
   title="Resources"
   onClose={() => (resourceOpen = false)}
 >
-  <div></div>
+  <div class="space-y-6 px-2 max-h-96 overflow-y-auto modal-scrollbar">
+    <!-- Alphabet Tables Section -->
+    <div>
+      <h3 class="font-semibold text-sm mb-3">Alphabet Tables</h3>
+      <div class="flex gap-3 overflow-x-auto pb-2 modal-scrollbar">
+        <a
+          href="/nova-alphabet-table.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
+        >
+          <img
+            src="/nova-alphabet-table.jpg"
+            alt="Nova Alphabet Table"
+            class="w-full h-auto"
+          />
+        </a>
+        <a
+          href="/nova-alphabet-written-table.png"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
+        >
+          <img
+            src="/nova-alphabet-written-table.png"
+            alt="Nova Alphabet Written Table"
+            class="w-full h-auto"
+          />
+        </a>
+        <a
+          href="/monolith-alphabet-table.png"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
+        >
+          <img
+            src="/monolith-alphabet-table.png"
+            alt="Monolith Alphabet Table"
+            class="w-full h-auto"
+          />
+        </a>
+        <a
+          href="/monolith-runic-table.png"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
+        >
+          <img
+            src="/monolith-runic-table.png"
+            alt="Monolith Runic Table"
+            class="w-full h-auto"
+          />
+        </a>
+      </div>
+    </div>
+
+    <!-- Available Fonts Section -->
+    <div>
+      <h3 class="font-semibold text-sm mb-3">Available Fonts</h3>
+      <div class="space-y-2">
+        <a
+          href="/fonts/NovaModern.woff2"
+          download="NovaModern.woff2"
+          class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors"
+        >
+          <span class="text-sm font-medium">Nova Modern</span>
+          <span class="text-xs opacity-60">WOFF2</span>
+        </a>
+        <a
+          href="/fonts/CursiveNova-Regular.ttf"
+          download="CursiveNova-Regular.ttf"
+          class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors"
+        >
+          <span class="text-sm font-medium">Cursive Nova Regular</span>
+          <span class="text-xs opacity-60">TTF</span>
+        </a>
+        <a
+          href="/fonts/MonolithRunes.ttf"
+          download="MonolithRunes.ttf"
+          class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors"
+        >
+          <span class="text-sm font-medium">Monolith Runes</span>
+          <span class="text-xs opacity-60">TTF</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Incomplete Font Section -->
+    <div>
+      <h3 class="font-semibold text-sm mb-3">Incomplete Font</h3>
+      <div class="space-y-2">
+        <a
+          href="/fonts/MonolithAlphabet.ttf"
+          download="MonolithAlphabet.ttf"
+          class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors opacity-75"
+        >
+          <span class="text-sm font-medium">Monolith Alphabet</span>
+          <span class="text-xs opacity-60">TTF</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </Modal>
