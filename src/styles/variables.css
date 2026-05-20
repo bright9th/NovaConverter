@@ -11,8 +11,8 @@
   --text-hover: #ffffff;
   --muted: #6b7280;
 
-  --accent-aqua: #60a5fa;
-  --accent-yellow: #facc15;
+  --accent-aqua: #5aeff4;
+  --accent-yellow: #fccc15;
 
   --radius-panel: 24px;
   --radius-button: 12px;
@@ -39,8 +39,8 @@ body.dark {
   --text-hover: #1e293b;
   --muted: #94a3b8;
 
-  --accent-aqua: #facc15;
-  --accent-yellow: #60a5fa;
+  --accent-aqua: #fccc15;
+  --accent-yellow: #5aeff4;
 
   --shadow-panel: 0 0 24px rgba(255, 255, 255, 0.5);
 }

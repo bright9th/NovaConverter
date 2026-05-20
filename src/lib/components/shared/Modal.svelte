@@ -35,12 +35,13 @@
       onclick={(e) => e.stopPropagation()}
     >
       <div class="mb-6 flex items-center justify-between">
-        <h2 class="font-c text-xl font-bold">
+        <h2 class="no-select font-c text-xl font-bold">
           {title}
         </h2>
 
         <button
           class="
+            no-select
             rounded-full
             hover:bg-black/10
             border border-black/10

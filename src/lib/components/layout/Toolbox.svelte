@@ -42,6 +42,64 @@
   let creator = $state("The [ MAOU ]");
   let repoUrl = $state("#");
 
+  const alphabetTables = [
+    {
+      href: "/study-novian.jpg",
+      src: "/study-novian.jpg",
+      alt: "Study Novian",
+    },
+    {
+      href: "/nova-alphabet-table.jpg",
+      src: "/nova-alphabet-table.jpg",
+      alt: "Nova Alphabet Table",
+    },
+    {
+      href: "/nova-alphabet-written-table.png",
+      src: "/nova-alphabet-written-table.png",
+      alt: "Nova Alphabet Written Table",
+    },
+    {
+      href: "/monolith-alphabet-table.png",
+      src: "/monolith-alphabet-table.png",
+      alt: "Monolith Alphabet Table",
+    },
+    {
+      href: "/monolith-runic-table.png",
+      src: "/monolith-runic-table.png",
+      alt: "Monolith Runic Table",
+    },
+  ];
+
+  const availableFonts = [
+    {
+      href: "/fonts/NovaModern.woff2",
+      download: "NovaModern.woff2",
+      label: "Nova Modern",
+      type: "WOFF2",
+    },
+    {
+      href: "/fonts/CursiveNova-Regular.ttf",
+      download: "CursiveNova-Regular.ttf",
+      label: "Cursive Nova Regular",
+      type: "TTF",
+    },
+    {
+      href: "/fonts/MonolithRunes.ttf",
+      download: "MonolithRunes.ttf",
+      label: "Monolith Runes",
+      type: "TTF",
+    },
+  ];
+
+  const incompleteFonts = [
+    {
+      href: "/fonts/MonolithAlphabet.ttf",
+      download: "MonolithAlphabet.ttf",
+      label: "Monolith Alphabet",
+      type: "TTF",
+    },
+  ];
+
   onMount(async () => {
     const repo = await fetchRepoInfo();
 
@@ -52,7 +110,7 @@
 
 <div
   class="
-    fixed bottom-6 right-6 z-[999]
+    no-select fixed bottom-6 right-6 z-[999]
     flex flex-col items-end gap-3
   "
 >
@@ -224,54 +282,16 @@
     <div>
       <h3 class="font-semibold text-sm mb-3">Alphabet Tables</h3>
       <div class="flex gap-3 overflow-x-auto pb-2 modal-scrollbar">
-        <a
-          href="/nova-alphabet-table.jpg"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
-        >
-          <img
-            src="/nova-alphabet-table.jpg"
-            alt="Nova Alphabet Table"
-            class="w-full h-auto"
-          />
-        </a>
-        <a
-          href="/nova-alphabet-written-table.png"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
-        >
-          <img
-            src="/nova-alphabet-written-table.png"
-            alt="Nova Alphabet Written Table"
-            class="w-full h-auto"
-          />
-        </a>
-        <a
-          href="/monolith-alphabet-table.png"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
-        >
-          <img
-            src="/monolith-alphabet-table.png"
-            alt="Monolith Alphabet Table"
-            class="w-full h-auto"
-          />
-        </a>
-        <a
-          href="/monolith-runic-table.png"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
-        >
-          <img
-            src="/monolith-runic-table.png"
-            alt="Monolith Runic Table"
-            class="w-full h-auto"
-          />
-        </a>
+        {#each alphabetTables as table}
+          <a
+            href={table.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-lg overflow-hidden border border-[var(--border)] flex-shrink-0 w-48 hover:opacity-80 transition-opacity cursor-pointer"
+          >
+            <img src={table.src} alt={table.alt} class="w-full h-auto" />
+          </a>
+        {/each}
       </div>
     </div>
 
@@ -279,30 +299,16 @@
     <div>
       <h3 class="font-semibold text-sm mb-3">Available Fonts</h3>
       <div class="space-y-2">
-        <a
-          href="/fonts/NovaModern.woff2"
-          download="NovaModern.woff2"
-          class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors"
-        >
-          <span class="text-sm font-medium">Nova Modern</span>
-          <span class="text-xs opacity-60">WOFF2</span>
-        </a>
-        <a
-          href="/fonts/CursiveNova-Regular.ttf"
-          download="CursiveNova-Regular.ttf"
-          class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors"
-        >
-          <span class="text-sm font-medium">Cursive Nova Regular</span>
-          <span class="text-xs opacity-60">TTF</span>
-        </a>
-        <a
-          href="/fonts/MonolithRunes.ttf"
-          download="MonolithRunes.ttf"
-          class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors"
-        >
-          <span class="text-sm font-medium">Monolith Runes</span>
-          <span class="text-xs opacity-60">TTF</span>
-        </a>
+        {#each availableFonts as font}
+          <a
+            href={font.href}
+            download={font.download}
+            class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors"
+          >
+            <span class="text-sm font-medium">{font.label}</span>
+            <span class="text-xs opacity-60">{font.type}</span>
+          </a>
+        {/each}
       </div>
     </div>
 
@@ -310,14 +316,16 @@
     <div>
       <h3 class="font-semibold text-sm mb-3">Incomplete Font</h3>
       <div class="space-y-2">
-        <a
-          href="/fonts/MonolithAlphabet.ttf"
-          download="MonolithAlphabet.ttf"
-          class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors opacity-75"
-        >
-          <span class="text-sm font-medium">Monolith Alphabet</span>
-          <span class="text-xs opacity-60">TTF</span>
-        </a>
+        {#each incompleteFonts as font}
+          <a
+            href={font.href}
+            download={font.download}
+            class="flex items-center justify-between p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--panel-hover)] transition-colors opacity-75"
+          >
+            <span class="text-sm font-medium">{font.label}</span>
+            <span class="text-xs opacity-60">{font.type}</span>
+          </a>
+        {/each}
       </div>
     </div>
   </div>
