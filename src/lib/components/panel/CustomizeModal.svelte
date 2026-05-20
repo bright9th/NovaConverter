@@ -3,6 +3,7 @@
     DEFAULT_SETTINGS,
     screenshotSettings,
   } from "../../stores/settings.store";
+  import Modal from "../shared/Modal.svelte";
   import ExportPreview from "./ExportPreview.svelte";
 
   let open = $state(false);
@@ -23,189 +24,171 @@
 {#if open}
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div
-    class="fixed inset-0 z-[10000] flex items-center justify-center bg-black/50 p-6"
-    onclick={close}
-  >
+  <Modal {open} title="Customize Export" onClose={() => (open = false)}>
     <div
-      class="modal-fade relative w-full max-w-[630px] rounded-3xl bg-[var(--panel)] p-6"
-      onclick={stop}
+      class="
+        grid
+        px-2
+        gap-4
+        min-[700px]:grid-cols-2
+        max-h-[150px]
+        overflow-y-auto
+      "
     >
-      <!-- Close button -->
-      <button
-        class="absolute right-4 top-4 rounded-md px-2 py-1 text-sm font-bold no-select hover:bg-black/10"
-        onclick={close}
-      >
-        ✕
-      </button>
+      <!-- Transparent -->
+      <div class="flex items-center justify-between gap-4">
+        <span>Transparent BG</span>
 
-      <h3 class="font-c mb-5 text-xl font-bold">Customize Export Settings</h3>
+        <div class="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={$screenshotSettings.transparent}
+            onchange={(e) =>
+              screenshotSettings.update((s) => ({
+                ...s,
+                transparent: (e.target as HTMLInputElement).checked,
+              }))}
+          />
 
-      <div
-        class="
-          grid
-          px-2
-          gap-4
-          min-[700px]:grid-cols-2
-          max-h-[150px]
-          overflow-y-auto
-        "
-      >
-        <!-- Transparent -->
-        <div class="flex items-center justify-between gap-4">
-          <span>Transparent BG</span>
-
-          <div class="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={$screenshotSettings.transparent}
-              onchange={(e) =>
-                screenshotSettings.update((s) => ({
-                  ...s,
-                  transparent: (e.target as HTMLInputElement).checked,
-                }))}
-            />
-
-            <span class="text-xs">
-              {String($screenshotSettings.transparent)}
-            </span>
-          </div>
-        </div>
-
-        <!-- Resolution -->
-        <div class="flex items-center justify-between gap-4">
-          <span>Resolution</span>
-
-          <div class="flex items-center gap-2">
-            <input
-              type="range"
-              min="1"
-              max="5"
-              value={$screenshotSettings.resolution}
-              oninput={(e) =>
-                screenshotSettings.update((s) => ({
-                  ...s,
-                  resolution: Number((e.target as HTMLInputElement).value),
-                }))}
-            />
-
-            <span class="text-xs">
-              {$screenshotSettings.resolution}x
-            </span>
-          </div>
-        </div>
-
-        <!-- Max Char -->
-        <div class="flex items-center justify-between gap-4">
-          <span>Max Character</span>
-
-          <div class="flex items-center gap-2">
-            <input
-              type="range"
-              min="10"
-              max="120"
-              value={$screenshotSettings.maxChar}
-              oninput={(e) =>
-                screenshotSettings.update((s) => ({
-                  ...s,
-                  maxChar: Number((e.target as HTMLInputElement).value),
-                }))}
-            />
-
-            <span class="text-xs">
-              {$screenshotSettings.maxChar}
-            </span>
-          </div>
-        </div>
-
-        <!-- BG -->
-        <div class="flex items-center justify-between gap-4">
-          <span>BG Color</span>
-
-          <div class="flex items-center gap-2">
-            <input
-              type="color"
-              value={$screenshotSettings.backgroundColor}
-              oninput={(e) =>
-                screenshotSettings.update((s) => ({
-                  ...s,
-                  backgroundColor: (e.target as HTMLInputElement).value,
-                }))}
-            />
-
-            <span class="text-xs">
-              {$screenshotSettings.backgroundColor}
-            </span>
-          </div>
-        </div>
-
-        <!-- Text -->
-        <div class="flex items-center justify-between gap-4">
-          <span>Text Color</span>
-
-          <div class="flex items-center gap-2">
-            <input
-              type="color"
-              value={$screenshotSettings.textColor}
-              oninput={(e) =>
-                screenshotSettings.update((s) => ({
-                  ...s,
-                  textColor: (e.target as HTMLInputElement).value,
-                }))}
-            />
-
-            <span class="text-xs">
-              {$screenshotSettings.textColor}
-            </span>
-          </div>
-        </div>
-
-        <!-- Padding -->
-        <div class="flex items-center justify-between gap-4">
-          <span>Padding</span>
-
-          <div class="flex items-center gap-2">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={$screenshotSettings.padding}
-              oninput={(e) =>
-                screenshotSettings.update((s) => ({
-                  ...s,
-                  padding: Number((e.target as HTMLInputElement).value),
-                }))}
-            />
-
-            <span class="text-xs">
-              {$screenshotSettings.padding}px
-            </span>
-          </div>
+          <span class="text-xs">
+            {String($screenshotSettings.transparent)}
+          </span>
         </div>
       </div>
 
-      <div class="my-4"></div>
+      <!-- Resolution -->
+      <div class="flex items-center justify-between gap-4">
+        <span>Resolution</span>
 
-      <ExportPreview />
+        <div class="flex items-center gap-2">
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value={$screenshotSettings.resolution}
+            oninput={(e) =>
+              screenshotSettings.update((s) => ({
+                ...s,
+                resolution: Number((e.target as HTMLInputElement).value),
+              }))}
+          />
 
-      <div class="mt-6 flex justify-end">
-        <button
-          class="
-            no-select
-            rounded-xl
-            border
-            border-black/10
-            px-4
-            py-2
-            text-sm
-            font-semibold
-            hover:bg-black/10
-          "
-          onclick={() => screenshotSettings.set(DEFAULT_SETTINGS)}
-        >
-          Reset Settings
-        </button>
+          <span class="text-xs">
+            {$screenshotSettings.resolution}x
+          </span>
+        </div>
+      </div>
+
+      <!-- Max Char -->
+      <div class="flex items-center justify-between gap-4">
+        <span>Max Character</span>
+
+        <div class="flex items-center gap-2">
+          <input
+            type="range"
+            min="10"
+            max="120"
+            value={$screenshotSettings.maxChar}
+            oninput={(e) =>
+              screenshotSettings.update((s) => ({
+                ...s,
+                maxChar: Number((e.target as HTMLInputElement).value),
+              }))}
+          />
+
+          <span class="text-xs">
+            {$screenshotSettings.maxChar}
+          </span>
+        </div>
+      </div>
+
+      <!-- BG -->
+      <div class="flex items-center justify-between gap-4">
+        <span>BG Color</span>
+
+        <div class="flex items-center gap-2">
+          <input
+            type="color"
+            value={$screenshotSettings.backgroundColor}
+            oninput={(e) =>
+              screenshotSettings.update((s) => ({
+                ...s,
+                backgroundColor: (e.target as HTMLInputElement).value,
+              }))}
+          />
+
+          <span class="text-xs">
+            {$screenshotSettings.backgroundColor}
+          </span>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="flex items-center justify-between gap-4">
+        <span>Text Color</span>
+
+        <div class="flex items-center gap-2">
+          <input
+            type="color"
+            value={$screenshotSettings.textColor}
+            oninput={(e) =>
+              screenshotSettings.update((s) => ({
+                ...s,
+                textColor: (e.target as HTMLInputElement).value,
+              }))}
+          />
+
+          <span class="text-xs">
+            {$screenshotSettings.textColor}
+          </span>
+        </div>
+      </div>
+
+      <!-- Padding -->
+      <div class="flex items-center justify-between gap-4">
+        <span>Padding</span>
+
+        <div class="flex items-center gap-2">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={$screenshotSettings.padding}
+            oninput={(e) =>
+              screenshotSettings.update((s) => ({
+                ...s,
+                padding: Number((e.target as HTMLInputElement).value),
+              }))}
+          />
+
+          <span class="text-xs">
+            {$screenshotSettings.padding}px
+          </span>
+        </div>
       </div>
     </div>
-  </div>
+
+    <div class="my-4"></div>
+
+    <ExportPreview />
+
+    <div class="mt-6 flex justify-end">
+      <button
+        class="
+          no-select
+          rounded-xl
+          border
+          border-black/10
+          px-4
+          py-2
+          text-sm
+          font-semibold
+          hover:bg-black/10
+        "
+        onclick={() => screenshotSettings.set(DEFAULT_SETTINGS)}
+      >
+        Reset Settings
+      </button>
+    </div>
+  </Modal>
 {/if}

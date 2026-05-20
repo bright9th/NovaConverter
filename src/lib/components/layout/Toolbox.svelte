@@ -1,46 +1,124 @@
 <script lang="ts">
   import { themeMode } from "../../stores/theme.store";
+  import Modal from "../shared/Modal.svelte";
 
-  let opened = false;
+  let opened = $state(false);
+
+  const TOOLBOX_ITEMS = [
+    {
+      id: "theme",
+      icon: "🌓",
+      label: "Theme",
+    },
+
+    {
+      id: "about",
+      icon: "ℹ",
+      label: "About",
+    },
+
+    {
+      id: "resource",
+      icon: "📦",
+      label: "Resources",
+    },
+  ];
+
+  let aboutOpen = $state(false);
+  let resourceOpen = $state(false);
 </script>
 
-<div class="fixed right-6 bottom-6 z-[9998] flex flex-col items-end gap-3">
+<div
+  class="
+    fixed bottom-6 right-6 z-[999]
+    flex flex-col items-end gap-3
+  "
+>
   {#if opened}
-    <div class="toolbox-option flex flex-col gap-2">
+    {#each TOOLBOX_ITEMS as item}
       <button
         class="
-          no-select
-          rounded-xl
+          group
+          flex h-14 w-14 items-center
+          justify-center
+          overflow-hidden
+          rounded-full
           bg-[var(--panel)]
-          px-4
-          py-3
-          shadow-lg
+          shadow-xl
+          transition-all duration-300
+          hover:w-44
         "
-        onclick={() =>
-          themeMode.update((v) => (v === "dark" ? "light" : "dark"))}
+        onclick={() => {
+          switch (item.id) {
+            case "theme":
+              themeMode.update((v) => (v === "dark" ? "light" : "dark"));
+              break;
+
+            case "about":
+              aboutOpen = true;
+              break;
+
+            case "resource":
+              resourceOpen = true;
+              break;
+          }
+        }}
       >
-        {#if $themeMode === "light"}
-          ☀ Light
-        {:else}
-          🌙 Dark
-        {/if}
+        <div
+          class="
+            flex w-full items-center gap-3 px-4
+          "
+        >
+          <span
+            class="
+              flex h-6 w-6
+              items-center justify-center
+              text-lg
+            "
+          >
+            {item.icon}
+          </span>
+
+          <span
+            class="
+              whitespace-nowrap
+              opacity-0
+              transition-opacity duration-200
+              group-hover:opacity-100
+            "
+          >
+            {item.label}
+          </span>
+        </div>
       </button>
-    </div>
+    {/each}
   {/if}
 
+  <!-- Main button -->
   <button
-    onclick={() => (opened = !opened)}
     class="
-      toolbox-spin
-      no-select
-      rounded-2xl
+      flex h-16 w-16 items-center justify-center
+      rounded-full
       bg-[var(--panel)]
-      p-4
-      text-xl
-      shadow-lg
-      {opened ? 'active' : ''}
+      text-2xl
+      shadow-2xl
+      transition-transform duration-300
     "
+    class:rotate-180={opened}
+    onclick={() => (opened = !opened)}
   >
     ⚙
   </button>
 </div>
+
+<Modal open={aboutOpen} title="About" onClose={() => (aboutOpen = false)}>
+  <div></div>
+</Modal>
+
+<Modal
+  open={resourceOpen}
+  title="Resources"
+  onClose={() => (resourceOpen = false)}
+>
+  <div></div>
+</Modal>
