@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "NovaModern";
+  src: url("/fonts/NovaModern.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CursiveNova-Regular";
+  src: url("/fonts/CursiveNova-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* @font-face {
+  font-family: "MonolithAlphabet";
+  src: url("/fonts/MonolithAlphabet.ttf") format("truetype");
+  font-display: swap;
+} */
+
+@font-face {
+  font-family: "MonolithRunes";
+  src: url("/fonts/MonolithRunes.ttf") format("truetype");
+  font-display: swap;
+}
+
+.font-a {
+  font-family: var(--font-a);
+}
+
+.font-b {
+  font-family: var(--font-b);
+}
+
+.font-c {
+  font-family: var(--font-c);
+}

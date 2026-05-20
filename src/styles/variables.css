@@ -1,0 +1,46 @@
+:root {
+  --bg: #fafafa;
+  --panel: #ffffff;
+  --panel-light: #00000011;
+  --button: #ffffff;
+  --button-hover: #1e293b;
+
+  --border: #1e293b;
+
+  --text: #1e293b;
+  --text-hover: #ffffff;
+  --muted: #6b7280;
+
+  --accent-aqua: #5aeff4;
+  --accent-yellow: #fccc15;
+
+  --radius-panel: 24px;
+  --radius-button: 12px;
+
+  --shadow-panel: 0 0 18px rgba(0, 0, 0, 0.3);
+
+  --font-a: "NovaModern", sans-serif;
+  --font-b: ui-sans-serif, system-ui, sans-serif;
+  --font-c: ui-sans-serif, system-ui, sans-serif;
+
+  --mobile-breakpoint: 900px;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --panel-light: #ffffff11;
+  --button: #1e293b;
+  --button-hover: #ffffff;
+
+  --border: #ffffff;
+
+  --text: #f8fafc;
+  --text-hover: #1e293b;
+  --muted: #94a3b8;
+
+  --accent-aqua: #fccc15;
+  --accent-yellow: #5aeff4;
+
+  --shadow-panel: 0 0 24px rgba(255, 255, 255, 0.5);
+}

@@ -1,117 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nova Converter</title>
-
-  <!-- Versioning -->
-  <script src="js/version.js"></script>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/utilities.css">
-
-  <!-- html2canvas lib -->
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-
-  <!-- JS -->
-  <script src="js/Page/init.js" data-versioned defer></script>
-  <script src="js/Page/panels.js" data-versioned defer></script>
-  <script src="js/Page/theme.js" data-versioned defer></script>
-  <script src="js/Page/dropdown.js" data-versioned defer></script>
-  <script src="js/Page/export.js" data-versioned defer></script>
-  <script src="js/Page/popup.js" data-versioned defer></script>
-  <script src="js/Page/valueUpdate.js" data-versioned defer></script>
-
-  <meta name="description" content="Convert English -> NovaModern" />
-</head>
-<body>
-  <header>
-    <div class="title unselectable">Nova Converter</div>
-    <div class="sub">The Translation Center of Nova</div>
-  </header>
-
-  <main class="wrap">
-    <div class="grid" id="grid">
-      <!-- Left Panel -->
-      <section class="panel left" aria-label="Input panel" id="panelLeft">
-        <header>
-          <h2>System</h2>
-          <div class="actions">
-            <button id="clearBtn" class="btn" type="button">Clear</button>
-            <button class="btn expand-btn" data-target="panelLeft">⤢</button>
-          </div>
-        </header>
-        <textarea id="left" placeholder="Type here..."></textarea>
-      </section>
-
-      <!-- Right Panel -->
-      <section class="panel right" aria-label="Output panel" id="panelRight">
-        <header>
-          <h2>NovaModern</h2>
-          <div class="actions">
-            <div class="dropdown">
-              <button id="customizeBtn" class="btn preview-btn" aria-haspopup="true" aria-expanded="false">
-                Customize ⬇
-              </button>
-              <div class="dropdown-content">
-                <div class="sub" style="text-align: left;">On Export</div>
-                <hr>
-                <div class="export-option">
-                  <label>Transparent BG </label>
-                  <input type="checkbox" class="checkbox" id="bgToggle">
-                </div>
-                <div class="export-option">
-                  <label for="resSlider">Resolution </label>
-                  <input type="range" class="slider" id="resSlider" min="1" max="5" step="1" value="1"
-                  style="width: 100px;">
-                  <span id="resValue" style="width: 50px">1 res</span>
-                </div>
-                <div class="export-option">
-                  <label for="charSlider">Max Char</label>
-                  <input type="range" class="slider" id="charSlider" min="10" max="100" value="40"
-                  style="width: 100px;">
-                  <span id="charValue" style="width: 50px">40 ch</span>
-                </div>
-              </div>
-            </div>
-            <button id="copyBtn" class="btn preview-btn" onclick="spawnPopup('<b>Copied an image!')">
-              Copy
-            </button>
-            <button id="exportImgBtn" class="btn preview-btn" onclick="spawnPopup('<b>Exported an image!')">
-              Export
-            </button>
-            <button class="btn expand-btn" data-target="panelRight">⤢</button>
-          </div>
-        </header>
-        <div class="output unselectable">
-          <div id="right" class="out-inner"></div>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <div>
-    <button id="themeToggle">🌞</button>
-  </div>
-
-  <div id="popup-container"></div>
-
-  <!-- 
-  <div class="warning-box">
-    ⚠
-    <span class="tooltip">
-      Due to technical issue, all utilities in Preview box will be disabled on mobile.
-    </span>
-  </div> 
-  -->
-
-  <footer>
-    Made by The [ MAOU ] — v1.0.9
-  </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/N.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova Converter</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

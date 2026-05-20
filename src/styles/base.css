@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+}
+
+.page-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-background__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.10;
+  mask-image: var(--bg-mask, linear-gradient(to bottom, transparent, black 18%, black 82%, transparent));
+  -webkit-mask-image: var(--bg-mask, linear-gradient(to bottom, transparent, black 18%, black 82%, transparent));
+  mask-mode: alpha;
+  -webkit-mask-mode: alpha;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+.dark .page-background__image  {
+  opacity: 0.04;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
