@@ -35,7 +35,7 @@ export async function captureElement(
 
   wrapper.remove();
 
-  return cropCanvas(rawCanvas, rawCanvasBg, 24);
+  return cropCanvas(rawCanvas, rawCanvasBg, settings.padding);
 }
 
 export async function canvasToClipboard(canvas: HTMLCanvasElement) {

@@ -11,6 +11,7 @@
     canvasToClipboard,
     canvasToDownload,
   } from "../../utils/screenshot";
+  import { selectedFont, AVAILABLE_FONTS } from "../../stores/font.store";
 
   let expanded = false;
 
@@ -55,13 +56,42 @@
       flex
       items-center
       justify-between
+      bg-[var(--panel-light)]
       border-b
-      border-black/10
+      border-[var(--border)]/10
       px-4
       py-3
     "
   >
-    <h2 class="font-c text-xs font-bold tracking-[0.2em]">NOVAMODERN</h2>
+    <select
+      class="
+        rounded-xl
+        border
+        border-black/10
+        bg-[var(--button)]
+        px-3
+        py-2
+        text-xs
+        font-bold
+        tracking-[0.2em]
+      "
+      onchange={(e) => {
+        const value = (e.target as HTMLSelectElement).value;
+
+        const found = AVAILABLE_FONTS.find((font) => font.id === value);
+
+        if (found) {
+          selectedFont.set(found);
+          $screenshotSettings.fontFamily = found.family;
+        }
+      }}
+    >
+      {#each AVAILABLE_FONTS as font}
+        <option value={font.id} selected={$selectedFont.id === font.id}>
+          {font.label.toUpperCase()}
+        </option>
+      {/each}
+    </select>
 
     <div class="flex items-center gap-2">
       <UtilityButton onClick={() => modalRef.openModal()}>
@@ -83,7 +113,7 @@
   <div
     bind:this={outputRef}
     class="
-      font-a
+      no-select
       min-h-[300px]
       overflow-auto
       whitespace-pre-wrap
@@ -93,6 +123,7 @@
       text-lg
       leading-relaxed
     "
+    style:font-family={$selectedFont.family}
   >
     {$inputText}
   </div>

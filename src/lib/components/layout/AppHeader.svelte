@@ -1,4 +1,4 @@
-<header class="px-6 py-8 text-center">
+<header class="px-6 py-8 text-center shadow-lg">
   <h1
     class="
       font-a

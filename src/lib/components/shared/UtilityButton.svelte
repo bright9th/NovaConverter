@@ -31,15 +31,13 @@
     rounded-[var(--radius-button)]
     border
     border-black/10
-    bg-white
+    bg-[var(--button)]
     px-3
     py-2
     text-sm
     font-semibold
-    transition-all
-    duration-200
-    hover:bg-slate-800
-    hover:text-white
+    hover:bg-[var(--button-hover)]
+    hover:text-[var(--text-hover)]
     disabled:cursor-not-allowed
     disabled:opacity-50
     {iconOnly ? 'aspect-square px-2' : ''}

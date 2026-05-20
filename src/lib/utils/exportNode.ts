@@ -5,10 +5,10 @@ export function buildExportNode(text: string, settings: ScreenshotSettings) {
     const el = document.createElement("div");
 
     el.style.display = "inline-block";
-    el.style.padding = "24px";
+    el.style.padding = `${settings.padding}px`;
     el.style.background = background;
-    el.style.color = "#000";
-    el.style.fontFamily = "NovaModern, system-ui, sans-serif";
+    el.style.color = settings.textColor;
+    el.style.fontFamily = settings.fontFamily;
     el.style.fontSize = "18px";
     // el.style.paddingTop = "8px";
     // el.style.paddingBottom = "24px";
@@ -30,6 +30,6 @@ export function buildExportNode(text: string, settings: ScreenshotSettings) {
 
   return {
     node: buildNode("transparent"),
-    nodeBg: !settings.transparent ? buildNode("#ffffff") : null,
+    nodeBg: !settings.transparent ? buildNode(settings.backgroundColor) : null,
   };
 }

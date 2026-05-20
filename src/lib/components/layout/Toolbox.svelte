@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { themeMode } from "../../stores/theme.store";
+
   let opened = false;
 </script>
 
@@ -14,21 +16,14 @@
           py-3
           shadow-lg
         "
+        onclick={() =>
+          themeMode.update((v) => (v === "dark" ? "light" : "dark"))}
       >
-        Option A
-      </button>
-
-      <button
-        class="
-          no-select
-          rounded-xl
-          bg-[var(--panel)]
-          px-4
-          py-3
-          shadow-lg
-        "
-      >
-        Option B
+        {#if $themeMode === "light"}
+          ☀ Light
+        {:else}
+          🌙 Dark
+        {/if}
       </button>
     </div>
   {/if}
