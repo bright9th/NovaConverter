@@ -25,17 +25,17 @@
   >
     <div
       class="
-        w-full max-w-3xl
-        rounded-3xl
+        w-full max-w-md sm:max-w-3xl
+        rounded-2xl sm:rounded-3xl
         border border-black/10
         bg-[var(--panel)]
-        p-6
+        p-4 sm:p-6
         shadow-2xl
       "
       onclick={(e) => e.stopPropagation()}
     >
-      <div class="mb-6 flex items-center justify-between">
-        <h2 class="no-select font-c text-xl font-bold">
+      <div class="mb-4 sm:mb-6 flex items-center justify-between">
+        <h2 class="no-select font-c text-lg sm:text-xl font-bold">
           {title}
         </h2>
 
@@ -45,8 +45,10 @@
             rounded-full
             hover:bg-black/10
             border border-black/10
-            px-3 py-2
-            text-sm font-bold
+            px-2 sm:px-3
+            py-1 sm:py-2
+            text-xs sm:text-sm
+            font-bold
           "
           onclick={onClose}
         >

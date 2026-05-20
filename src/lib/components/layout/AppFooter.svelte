@@ -18,8 +18,8 @@
 
 <footer
   class="
-    flex items-center justify-center gap-2
-    py-8 text-sm text-[var(--muted)]
+    flex flex-col sm:flex-row items-center justify-center gap-2 flex-wrap
+    py-6 sm:py-8 text-xs sm:text-sm text-[var(--muted)]
   "
 >
   <span> Made by </span>
@@ -33,17 +33,17 @@
       transition-opacity hover:opacity-70
     "
   >
-    <img src={GitHubLogo} alt="GitHub" class="h-6 [.dark_&]:invert" />
+    <img src={GitHubLogo} alt="GitHub" class="h-5 sm:h-6 [.dark_&]:invert" />
 
     <span class="underline">
       {creator}
     </span>
 
-    <ExternalLink size={18} />
+    <ExternalLink size={16} class="sm:w-[18px] sm:h-[18px]" />
   </a>
 
-  <span class="flex flex-row gap-2">
-    <span class="no-select">—</span>
+  <span class="flex flex-row gap-1 sm:gap-2">
+    <span class="no-select scale-x-0 sm:scale-x-100">—</span>
     <span>v{PACKAGE_VERSION}</span><span class="no-select">—</span>
     <span>© 2024 Yostar. All rights reserved.</span>
   </span>

@@ -64,3 +64,18 @@ button {
 textarea {
   resize: none;
 }
+
+/* Mobile responsive base styles */
+@media (max-width: 639px) {
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

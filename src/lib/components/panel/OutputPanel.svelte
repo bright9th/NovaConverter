@@ -54,13 +54,19 @@
   <div
     class="
       flex
-      items-center
-      justify-between
+      flex-col
+      sm:flex-row
+      sm:items-center
+      sm:justify-between
+      gap-3
+      sm:gap-2
       bg-[var(--panel-light)]
       border-b
       border-[var(--border)]/10
-      px-4
-      py-3
+      px-3
+      sm:px-4
+      py-2
+      sm:py-3
     "
   >
     <select
@@ -74,6 +80,8 @@
         text-xs
         font-bold
         tracking-[0.2em]
+        w-full
+        sm:w-auto
       "
       onchange={(e) => {
         const value = (e.target as HTMLSelectElement).value;
@@ -120,9 +128,11 @@
       overflow-auto
       whitespace-pre-wrap
       break-words
-      p-5
+      p-3
+      sm:p-5
       text-left
-      text-lg
+      text-base
+      sm:text-lg
       leading-relaxed
     "
     style:font-family={$selectedFont.family}

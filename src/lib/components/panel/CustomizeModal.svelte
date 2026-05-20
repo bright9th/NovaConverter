@@ -29,8 +29,9 @@
       class="
         grid
         px-2
-        gap-4
-        min-[700px]:grid-cols-2
+        gap-3 sm:gap-4
+        grid-cols-1
+        sm:grid-cols-2
         max-h-[150px]
         overflow-y-auto
       "

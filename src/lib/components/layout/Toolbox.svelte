@@ -112,7 +112,7 @@
 
 <div
   class="
-    no-select fixed bottom-6 right-6 z-[999]
+    no-select fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-[999]
     flex flex-col items-end gap-3
   "
 >
@@ -120,7 +120,7 @@
     <button
       class="
         group absolute
-        flex h-14 w-14 items-center justify-center
+        flex h-12 sm:h-14 w-12 sm:w-14 items-center justify-center
         overflow-hidden
         rounded-full
         hover:inset-ring-4
@@ -130,7 +130,7 @@
         transition-[transform,opacity,width]
         duration-300 ease-out
 
-        hover:w-36
+        hover:w-32 sm:hover:w-36
       "
       style={opened
         ? `
@@ -171,10 +171,14 @@
         <!-- perfectly centered icon -->
         <div
           class="
-            flex min-w-6 items-center justify-center
+            flex min-w-5 sm:min-w-6 items-center justify-center
           "
         >
-          <item.icon size={20} strokeWidth={2.25} />
+          <item.icon
+            size={18}
+            class="sm:w-[20px] sm:h-[20px]"
+            strokeWidth={2.25}
+          />
         </div>
 
         <span
@@ -196,7 +200,7 @@
   <button
     class="
       relative z-10
-      flex h-16 w-16 items-center justify-center
+      flex h-14 sm:h-16 w-14 sm:w-16 items-center justify-center
       rounded-full
       hover:inset-ring-4
       bg-[var(--panel)]
@@ -205,7 +209,7 @@
     class:rotate-180={opened}
     onclick={() => (opened = !opened)}
   >
-    <Settings size={28} strokeWidth={2.25} />
+    <Settings size={24} class="sm:w-[28px] sm:h-[28px]" strokeWidth={2.25} />
   </button>
 </div>
 
