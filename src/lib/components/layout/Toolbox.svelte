@@ -13,6 +13,7 @@
   } from "@lucide/svelte/icons";
   import { onMount } from "svelte";
   import { fetchRepoInfo } from "../../utils/github";
+  import { isBreakpoint, viewportWidth } from "../../utils/breakpoints";
 
   const BASE_URL = import.meta.env.BASE_URL;
 
@@ -108,6 +109,8 @@
     creator = `@${repo.owner}`;
     repoUrl = repo.url;
   });
+
+  let isSm = $derived(isBreakpoint($viewportWidth, "sm"));
 </script>
 
 <div
@@ -137,7 +140,7 @@
           opacity: 1;
           pointer-events: auto;
           transform:
-            translateY(-${(index + 1) * 68}px)
+            translateY(-${(index + 1) * (isSm ? 68 : 58)}px)
             scale(1);
         `
         : `

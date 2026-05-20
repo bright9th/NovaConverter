@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Maximize2, X } from "@lucide/svelte";
   import UtilityButton from "../shared/UtilityButton.svelte";
 
   interface Props {
@@ -15,8 +16,8 @@
 
 <UtilityButton iconOnly onClick={onToggle}>
   {#if expanded}
-    🗙
+    <X size={14} />
   {:else}
-    ⤢
+    <Maximize2 size={14} />
   {/if}
 </UtilityButton>
