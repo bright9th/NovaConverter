@@ -1,4 +1,5 @@
 import { writable } from "svelte/store";
+import { selectedFont } from "./font.store";
 
 export type ScreenshotSettings = {
   transparent: boolean;
@@ -34,7 +35,9 @@ function createPersistentStore() {
       ? (() => {
           const saved = localStorage.getItem(STORAGE_KEY);
 
-          if (!saved) return DEFAULT_SETTINGS;
+          if (!saved) {
+            return { ...DEFAULT_SETTINGS, fontFamily: "NovaModern, system-ui" };
+          }
 
           try {
             return {
