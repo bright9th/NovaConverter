@@ -47,7 +47,7 @@
   />
 </div>
 
-<main class="min-h-screen">
+<main class="min-h-screen overflow-x-hidden">
   <AppHeader />
 
   <section class="px-4 py-6 xl:px-12">
