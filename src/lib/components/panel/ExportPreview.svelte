@@ -8,10 +8,8 @@
 
   let expanded = $state(false);
 
-  /*
-    Preview-only zoom.
-    1 = 100%
-  */
+  const textResolution = $derived($screenshotSettings.resolution);
+
   const maxZoom = 1;
   let zoom = $state(maxZoom);
 </script>
@@ -97,7 +95,7 @@
       style:background={settings.transparent
         ? "transparent"
         : settings.backgroundColor}
-      style:padding={`${settings.padding}px`}
+      style:padding={`${settings.padding / textResolution}px`}
       style:transform={`scale(${zoom})`}
     >
       <div

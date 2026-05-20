@@ -39,7 +39,7 @@
         ✕
       </button>
 
-      <h3 class="font-c mb-5 text-xl font-bold">Customize Export</h3>
+      <h3 class="font-c mb-5 text-xl font-bold">Customize Export Settings</h3>
 
       <div
         class="
@@ -82,7 +82,7 @@
               min="1"
               max="5"
               value={$screenshotSettings.resolution}
-              onchange={(e) =>
+              oninput={(e) =>
                 screenshotSettings.update((s) => ({
                   ...s,
                   resolution: Number((e.target as HTMLInputElement).value),
@@ -105,7 +105,7 @@
               min="10"
               max="120"
               value={$screenshotSettings.maxChar}
-              onchange={(e) =>
+              oninput={(e) =>
                 screenshotSettings.update((s) => ({
                   ...s,
                   maxChar: Number((e.target as HTMLInputElement).value),
@@ -126,7 +126,7 @@
             <input
               type="color"
               value={$screenshotSettings.backgroundColor}
-              onchange={(e) =>
+              oninput={(e) =>
                 screenshotSettings.update((s) => ({
                   ...s,
                   backgroundColor: (e.target as HTMLInputElement).value,
@@ -147,7 +147,7 @@
             <input
               type="color"
               value={$screenshotSettings.textColor}
-              onchange={(e) =>
+              oninput={(e) =>
                 screenshotSettings.update((s) => ({
                   ...s,
                   textColor: (e.target as HTMLInputElement).value,
@@ -170,7 +170,7 @@
               min="0"
               max="100"
               value={$screenshotSettings.padding}
-              onchange={(e) =>
+              oninput={(e) =>
                 screenshotSettings.update((s) => ({
                   ...s,
                   padding: Number((e.target as HTMLInputElement).value),
